@@ -12,10 +12,10 @@ bars:
     class_name: "yasb-bar"
     alignment:
       position: "top"
-      center: false
+      center: true
     blur_effect:
       enabled: true
-      acrylic: false
+      acrylic: true
       dark_mode: true
       round_corners: false
       border_color: None
@@ -34,7 +34,7 @@ bars:
     widgets:
       left: [ "home", "komorebi_workspaces", "active_window" ]
       center: [ "clock" ]
-      right: [ "media", "traffic", "cpu", "memory", "battery", "notifications", "bluetooth", "power_menu" ]
+      right: [ "traffic", "media", "cpu", "memory", "battery", "power_menu" ]
 widgets:
   home:
     type: "yasb.home.HomeWidget"
@@ -86,39 +86,21 @@ widgets:
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
     options:
-      label: "{win[title]}"
+      label: "<span>{win[title]}</span>"
       label_no_window: ""
       label_icon: true
       label_icon_size: 12
-      max_length: 20
+      max_length: 40
       max_length_ellipsis: "..."
       monitor_exclusive: true
-
-  volume:
-    type: "yasb.volume.VolumeWidget"
-    options:
-      label: "<span>{icon}</span> {level}"
-      volume_icons:
-        - "\ueee8" # Icon for muted
-        - "\uf026" # Icon for 0-10% volume
-        - "\uf027" # Icon for 11-30% volume
-        - "\uf027" # Icon for 31-60% volume
-        - "\uf028" # Icon for 61-100% volume
-      callbacks:
-        on_right: "exec cmd.exe /c start ms-settings:sound"
 
   clock:
     type: "yasb.clock.ClockWidget"
     options:
       label: "{%a %b %d %H:%M:%S}"
-      timezones: [ ]
+      timezones: []
       calendar:
-        blur: True
-        round_corners: True
-        round_corners_type: "normal"
-        border_color: "System"
         alignment: "center"
-        direction: "down"
 
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
@@ -181,6 +163,7 @@ widgets:
       label: "<div style=\"text-align:right\">{upload_speed} \u25b2</div><div style=\"text-align:right;\">{download_speed} \u25bc</div>"
       update_interval: 1000
       hide_if_offline: false
+      max_label_length: 100
       callbacks:
         on_left: 'do_nothing'
         on_middle: 'do_nothing'
@@ -190,6 +173,7 @@ widgets:
     type: "yasb.battery.BatteryWidget"
     options:
       label: "<span>{icon}</span>{percent}%"
+      label_alt: "<span>{icon}</span>{percent}%"
       update_interval: 5000
       charging_options:
         icon_format: "{charging_icon}"
@@ -213,41 +197,3 @@ widgets:
         next_track: "\ue893"
         play: "\ue768"
         pause: "\ue769"
-
-  notifications:
-    type: "yasb.notifications.NotificationsWidget"
-    options:
-      label: "<span>\uf476</span> {count}"
-      label_alt: "{count} notifications"
-      hide_empty: true
-      tooltip: true
-      callbacks:
-        on_left: "toggle_notification"
-        on_right: "toggle_label"
-        on_middle: "do_nothing"
-
-  systray:
-    type: "yasb.systray.SystrayWidget"
-    options:
-      class_name: "systray"
-      show_unpinned: true
-      show_unpinned_button: false
-      show_battery: false
-      show_volume: false
-      show_network: false
-
-  bluetooth:
-    type: "yasb.bluetooth.BluetoothWidget"
-    options:
-      label: "<span>{device_name}</span>"
-      icons:
-        bluetooth_on: "\udb80\udcaf"
-        bluetooth_off: "\udb80\udcb2"
-        bluetooth_connected: "\udb80\udcb1"
-      callbacks:
-        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
