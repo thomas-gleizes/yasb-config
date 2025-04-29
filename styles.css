@@ -28,7 +28,7 @@ For more information about configuration options, please visit the Wiki https://
     --surface0: #282936;
     --base: #1e1e2e;
     --mantle: rgba(24, 24, 37, 0.5);
-    --crust: rgba(17, 17, 27, 0.85);
+    --crust: rgba(27, 27, 27, 0.91);
     --main: #10151d;
 }
 
@@ -49,8 +49,7 @@ For more information about configuration options, please visit the Wiki https://
 }
 
 .widget {
-    padding: 0 8px;
-    margin: 0;
+    margin: 0 8px;
 }
 
 /* HOME WINDOW */
@@ -243,7 +242,6 @@ For more information about configuration options, please visit the Wiki https://
 
 .memory-widget .label {
     font-size: 14px;
-
 }
 
 .memory-widget .label.alt {
@@ -329,7 +327,7 @@ For more information about configuration options, please visit the Wiki https://
 
 /*POWER WIDGET*/
 .power-menu-widget {
-    padding: 0 12px;
+    /*padding: 0 12px;*/
 }
 
 .power-menu-widget .label {
