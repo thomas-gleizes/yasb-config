@@ -22,7 +22,7 @@ bars:
       round_corners: false
       border_color: None
     window_flags:
-      always_on_top: true
+      always_on_top: false
       windows_app_bar: true
       hide_on_fullscreen: true
     dimensions:
@@ -141,11 +141,6 @@ widgets:
       histogram_num_columns: 8
       callbacks:
         on_right: "exec cmd /c Taskmgr"
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 5
 
   memory:
     type: "yasb.memory.MemoryWidget"
@@ -156,11 +151,6 @@ widgets:
         on_left: "toggle_label"
         on_middle: "do_nothing"
         on_right: "do_nothing"
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 0
 
   traffic:
     type: "yasb.traffic.TrafficWidget"
@@ -178,7 +168,7 @@ widgets:
     type: "yasb.battery.BatteryWidget"
     options:
       label: "{icon} {percent}%"
-      label_alt: "<span>{icon}</span>{percent}%"
+      label_alt: "{icon} {percent}%"
       update_interval: 5000
       charging_options:
         icon_format: "{charging_icon}"
